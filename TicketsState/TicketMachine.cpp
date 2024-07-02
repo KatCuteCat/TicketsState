@@ -77,17 +77,35 @@ void TicketIssuedState::issueTicket(TicketMachine* machine) {
 int main() {
     TicketMachine machine;
 
-    machine.insertMoney();
-    machine.pressButton();
+    while (true) {
+        int choice;
 
-    machine.insertMoney();
-    machine.ejectMoney();
-    machine.pressButton();
+        std::cout << "\nTicket Machine\n";
+        std::cout << "1. Insert money\n";
+        std::cout << "2. Eject money\n";
+        std::cout << "3. Press button\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
 
-    machine.insertMoney();
-    machine.pressButton();
-    machine.insertMoney();
-    machine.pressButton();
+        switch (choice) {
+        case 1:
+            machine.insertMoney();
+            break;
+        case 2:
+            machine.ejectMoney();
+            break;
+        case 3:
+            machine.pressButton();
+            break;
+        case 4:
+            std::cout << "Exiting...\n";
+            return 0;
+        default:
+            std::cout << "Invalid choice. Please try again.\n";
+            break;
+        }
+    }
 
     return 0;
 }
